@@ -1,13 +1,13 @@
 {
-  "howware": "0.1",
+  "howware": "0.2",
   "name": "todo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Your to-dos with Getting Things Done, without an app: capture, clarify, choose what to do now, and a weekly review. Areas and rules are the owner's, and grow over time.",
   "license": "Apache-2.0",
   "languages": ["en", "es"],
   "hosts": [],
   "skill": "skill/todo",
-  "requires": [
+  "adapters": [
     {"name": "project-memory", "version": ">=0.3.0", "url": "https://github.com/howware/long-term-memory-for-AI"}
   ],
   "tools": [{"name": "todo.py", "network": false, "dependencies": []}],

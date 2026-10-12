@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- Follows [howware specification 0.2](https://github.com/howware/howware/blob/main/docs/spec.md): `howware.json`
+  lists the memory as an **adapter** (`adapters`); the installer prints the adapters to install.
+
 ## 0.1.0 — first version
 
 - Protocol for Getting Things Done without an app: capture, clarify (triage), what to do now, lists, done /

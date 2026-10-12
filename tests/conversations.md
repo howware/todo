@@ -1,6 +1,6 @@
 # Conversation scenarios
 
-Checked by hand before each release ([howware spec §8](https://github.com/howware/howware/blob/main/docs/spec.md#8-testing)),
+Checked by hand before each release ([howware spec §10](https://github.com/howware/howware/blob/main/docs/spec.md#10-testing)),
 with synthetic tasks. The owner may speak any language; the agent answers in theirs.
 
 | # | The owner says | The agent must | The agent must not |

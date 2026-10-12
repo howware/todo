@@ -30,8 +30,9 @@ def main() -> int:
         shutil.rmtree(target)
     shutil.copytree(source, target, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
     print(f"Installed {name} {manifest['version']} in {target}")
-    for req in manifest.get("requires", []):
-        print(f"Also requires {req['name']} {req['version']}: {req.get('url', '')}")
+    for kind, items in (("adapter", manifest.get("adapters", [])), ("requirement", manifest.get("requires", []))):
+        for item in items:
+            print(f"Also needs {kind} {item['name']} {item['version']}: {item.get('url', '')}")
     return 0
 
 

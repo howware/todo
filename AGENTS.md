@@ -17,7 +17,7 @@ Rules for AI agents (and people) **developing** this howware. To **use** it, the
 | A rule the owner teaches (categories, limits, names) | The memory, as data, through the tool — never code |
 | An operation that must be exact (parsing, money, dates, ids, storage) | The tool, with tests |
 
-## Conventions (howware spec §5–§6)
+## Conventions (howware spec §6, §8)
 
 - Tools: JSON on stdout, errors as JSON with documented exit codes, no prompts, no network, standard library.
 - Money in integer cents with a declared unit; dates at noon local time; stable keys for idempotent writes.

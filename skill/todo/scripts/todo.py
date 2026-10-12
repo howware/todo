@@ -34,7 +34,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 HERE = Path(__file__).resolve().parent
 SEED = HERE / "seed.json"
 MIN_MEMORY = (0, 3, 0)

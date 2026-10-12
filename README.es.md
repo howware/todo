@@ -7,8 +7,8 @@
 
 <p align="center">
   <a href="https://github.com/howware/todo/actions/workflows/ci.yml"><img src="https://github.com/howware/todo/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <img src="https://img.shields.io/badge/versión-0.1.0-blue" alt="Versión 0.1.0">
-  <a href="https://howware.org/es/"><img src="https://img.shields.io/badge/howware-0.1-5a45d6" alt="howware 0.1"></a>
+  <img src="https://img.shields.io/badge/versión-0.1.1-blue" alt="Versión 0.1.1">
+  <a href="https://howware.org/es/"><img src="https://img.shields.io/badge/howware-0.2-5a45d6" alt="howware 0.2"></a>
   <img src="https://img.shields.io/badge/python-3.9%2B-blue" alt="Python 3.9+">
   <img src="https://img.shields.io/badge/licencia-Apache%202.0-green" alt="Apache 2.0">
 </p>
@@ -58,7 +58,7 @@ Los contextos empiezan como computadora, teléfono, calle y casa; puedes agregar
 |---|---|
 | Protocolo | [`skill/todo/SKILL.md`](skill/todo/SKILL.md): GTD y las reglas para el agente, en palabras claras |
 | Herramienta | [`todo.py`](skill/todo/scripts/todo.py): solo lo que debe ser exacto: la fecha y el día de hoy, vencimientos, recurrencias (el día 10, el último viernes, cada martes…), días de vencido, estados e historia |
-| Memoria | [Long-Term Memory for AI](https://github.com/howware/long-term-memory-for-AI): tus tareas y tus reglas, en un archivo local, con historia |
+| Memoria | El adaptador [Long-Term Memory for AI](https://github.com/howware/long-term-memory-for-AI): tus tareas y tus reglas, en un archivo local, con historia |
 
 El agente nunca adivina fechas: «mañana a las 10» se convierte en fecha con el `now` de la herramienta y se
 confirma («martes 13 de octubre a las 10:00»).
