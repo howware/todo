@@ -76,6 +76,10 @@ Create a folder for your to-dos, open Claude Code there (add the persistent-memo
 [Long-Term Memory for AI](https://github.com/howware/long-term-memory-for-AI#project-setup) to its
 `CLAUDE.md`) and say *"I want to keep my to-dos here."*
 
+**With your journal.** `todo` can share its memory with [bitacora](https://github.com/howware/bitacora) (habits,
+notes, collections): install both in the same folder, and the things to do you mention while writing your day land
+in your inbox. Neither needs the other.
+
 ## Privacy and limits
 
 | Designed to stay on your computer | What the AI agent sees |

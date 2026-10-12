@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- README: `todo` can share its memory with [bitacora](https://github.com/howware/bitacora) 0.2, which sends the
+  things to do said in the journal to the inbox.
 - Private-data guard from the howware template: in English, blocks invoice XMLs, allows the SAT's public
   generic RFCs.
 

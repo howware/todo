@@ -76,6 +76,10 @@ Crea una carpeta para tus pendientes, abre ahí Claude Code (agrega a su `CLAUDE
 persistente de [Long-Term Memory for AI](https://github.com/howware/long-term-memory-for-AI/blob/main/README.es.md#configurar-un-proyecto))
 y di *«Quiero llevar mis pendientes aquí.»*
 
+**Con tu bitácora.** `todo` puede compartir la memoria con [bitacora](https://github.com/howware/bitacora) (hábitos,
+notas, colecciones): instala los dos en la misma carpeta y lo que tengas que hacer, dicho mientras escribes tu día,
+llega a tu bandeja. Ninguno necesita al otro.
+
 ## Privacidad y límites
 
 | Diseñado para quedarse en tu computadora | Lo que ve el agente de IA |
