@@ -1,11 +1,11 @@
-"""Guardia: ningún archivo versionado puede traer estados de cuenta ni datos que identifiquen a alguien.
+"""Guard: no versioned file may carry the owner's documents or data that identifies someone.
 
-    git ls-files -z | xargs -0 python tools/check_private_data.py      # lo que corre CI
-    python tools/check_private_data.py archivo1 archivo2 ...
+    git ls-files -z | xargs -0 python tools/check_private_data.py      # what CI runs
+    python tools/check_private_data.py file1 file2 ...
 
-Bloquea PDFs, carpetas de datos reales (estados/, reportes/, .memory/), bases SQLite, CLABEs (con dígito
-verificador), tarjetas (Luhn), RFC, CURP y correos. Los JSON de prueba vienen de PDFs sintéticos de mxbank.
-Sale con 1 si encuentra algo; nunca imprime el valor encontrado, solo el archivo, la línea y el tipo.
+Blocks documents (PDF, invoice XML), real-data folders (estados/, reportes/, .memory/, mxsat-private/), SQLite
+databases, CLABEs (with check digit), card numbers (Luhn), RFCs, CURPs and e-mail addresses. The SAT's public
+generic RFCs are allowed. Exits 1 if it finds anything; it never prints the value, only file, line and kind.
 """
 
 from __future__ import annotations
@@ -14,10 +14,11 @@ import re
 import sys
 from pathlib import Path
 
-BLOCKED_PARTS = {"estados", "reportes", ".memory", "corpus"}
-BLOCKED_SUFFIXES = {".pdf", ".sqlite", ".sqlite3", ".db"}
+BLOCKED_PARTS = {"estados", "reportes", ".memory", "corpus", "mxsat-private"}
+BLOCKED_SUFFIXES = {".pdf", ".xml", ".sqlite", ".sqlite3", ".db"}
 DIGITS = re.compile(r"(?<![\dA-Fa-f])\d{15,18}(?![\dA-Fa-f])")
 RFC = re.compile(r"\b[A-ZÑ&]{3,4}\d{6}[A-Z\d]{3}\b")
+PUBLIC_RFCS = {"XAXX010101000", "XEXX010101000", "SAT970701NN3"}  # público en general, extranjero, the SAT
 CURP = re.compile(r"\b[A-Z][AEIOUX][A-Z]{2}\d{6}[HM][A-Z]{5}[A-Z\d]\d\b")
 EMAIL = re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.]+\b")
 EMAIL_OK = re.compile(r"@(example\.(com|org)|users\.noreply\.github\.com)$")
@@ -40,9 +41,9 @@ def clabe(number: str) -> bool:
 def findings(path: Path) -> list[str]:
     out = []
     if BLOCKED_PARTS & set(path.parts):
-        out.append(f"{path}: carpeta de datos reales")
+        out.append(f"{path}: real-data folder")
     if path.suffix.lower() in BLOCKED_SUFFIXES:
-        out.append(f"{path}: tipo de archivo bloqueado ({path.suffix})")
+        out.append(f"{path}: blocked file type ({path.suffix})")
     if out or not path.is_file():
         return out
     try:
@@ -53,16 +54,16 @@ def findings(path: Path) -> list[str]:
         for m in DIGITS.finditer(line):
             digits = m.group()
             if len(digits) == 18 and clabe(digits):
-                out.append(f"{path}:{n}: posible CLABE")
+                out.append(f"{path}:{n}: possible CLABE")
             elif len(digits) in (15, 16) and luhn(digits):
-                out.append(f"{path}:{n}: posible número de tarjeta")
-        if RFC.search(line):
-            out.append(f"{path}:{n}: posible RFC")
+                out.append(f"{path}:{n}: possible card number")
+        if any(m.group() not in PUBLIC_RFCS for m in RFC.finditer(line)):
+            out.append(f"{path}:{n}: possible RFC")
         if CURP.search(line):
-            out.append(f"{path}:{n}: posible CURP")
+            out.append(f"{path}:{n}: possible CURP")
         for m in EMAIL.finditer(line):
             if not EMAIL_OK.search(m.group()):
-                out.append(f"{path}:{n}: correo electrónico")
+                out.append(f"{path}:{n}: e-mail address")
     return out
 
 

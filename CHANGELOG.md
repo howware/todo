@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Private-data guard from the howware template: in English, blocks invoice XMLs, allows the SAT's public
+  generic RFCs.
+
 ## 0.1.1
 
 - Follows [howware specification 0.2](https://github.com/howware/howware/blob/main/docs/spec.md): `howware.json`

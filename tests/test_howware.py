@@ -1,4 +1,4 @@
-"""Conformance with the howware specification 0.1 (https://howware.org): manifest, versions and protocol."""
+"""Conformance with the howware specification 0.2 (https://howware.org): manifest, versions and protocol."""
 
 from __future__ import annotations
 
