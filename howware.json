@@ -1,0 +1,30 @@
+{
+  "howware": "0.1",
+  "name": "todo",
+  "version": "0.1.0",
+  "description": "Your to-dos with Getting Things Done, without an app: capture, clarify, choose what to do now, and a weekly review. Areas and rules are the owner's, and grow over time.",
+  "license": "Apache-2.0",
+  "languages": ["en", "es"],
+  "hosts": [],
+  "skill": "skill/todo",
+  "requires": [
+    {"name": "project-memory", "version": ">=0.3.0", "url": "https://github.com/howware/long-term-memory-for-AI"}
+  ],
+  "tools": [{"name": "todo.py", "network": false, "dependencies": []}],
+  "memory": {"kind": "local-sqlite", "append_only": true, "seed_version": "1"},
+  "privacy": {
+    "stays_local": [
+      "the memory file with tasks, history and the owner's rules (the agent queries it and sees the answers)"
+    ],
+    "agent_sees": [
+      "task titles, next actions, areas, contexts, due dates and their history, when it queries them",
+      "the owner's rules",
+      "everything the owner types in the conversation"
+    ],
+    "cannot_guarantee": [
+      "what the agent sees leaves the computer for the AI provider, under its terms",
+      "reminders happen only when the owner opens a conversation; there are no push notifications",
+      "the memory file is not encrypted"
+    ]
+  }
+}

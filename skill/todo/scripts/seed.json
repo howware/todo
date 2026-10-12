@@ -1,0 +1,36 @@
+{
+  "seed_version": "1",
+  "predicates": [
+    {"id": "task_title", "value_type": "text", "cardinality": "one", "label": "Task title", "description": "What the owner said, as captured or reworded with approval"},
+    {"id": "task_state", "value_type": "text", "cardinality": "one", "label": "Task state", "description": "GTD state: inbox, next, waiting, someday, done or dropped"},
+    {"id": "next_action", "value_type": "text", "cardinality": "one", "label": "Next action", "description": "The very next physical action, starting with a verb"},
+    {"id": "in_area", "value_type": "entity", "cardinality": "one", "label": "Area", "description": "Area of the owner's life the task belongs to (created by the owner)"},
+    {"id": "in_context", "value_type": "entity", "cardinality": "one", "label": "Context", "description": "Where or with what the task can be done"},
+    {"id": "in_project", "value_type": "entity", "cardinality": "one", "label": "Project", "description": "GTD project: an outcome that needs more than one action"},
+    {"id": "due_at", "value_type": "datetime", "cardinality": "one", "label": "Due", "description": "When it is due; a date without time is stored at noon local time"},
+    {"id": "due_has_time", "value_type": "boolean", "cardinality": "one", "label": "Due has a time", "description": "Whether the due includes a time of day"},
+    {"id": "deadline_kind", "value_type": "text", "cardinality": "one", "label": "Deadline kind", "description": "hard (costs if missed) or soft"},
+    {"id": "estimate_minutes", "value_type": "integer", "unit": "minute", "cardinality": "one", "label": "Estimate", "description": "Estimated time to do it"},
+    {"id": "energy", "value_type": "text", "cardinality": "one", "label": "Energy", "description": "Energy it needs: low, medium or high"},
+    {"id": "waiting_on", "value_type": "text", "cardinality": "one", "label": "Waiting on", "description": "Who or what the task is waiting for"},
+    {"id": "recurrence", "value_type": "text", "cardinality": "one", "label": "Recurrence", "description": "Rule for the next occurrence (daily, weekly:mon, monthly:1, monthly:last-fri, yearly:MM-DD, days:N)"},
+    {"id": "series_due_at", "value_type": "datetime", "cardinality": "one", "label": "Series schedule", "description": "The scheduled date of this occurrence of a recurring task; postponing does not move it"},
+    {"id": "series_has_time", "value_type": "boolean", "cardinality": "one", "label": "Series has a time", "description": "Whether the recurring schedule includes a time of day"},
+    {"id": "times_postponed", "value_type": "integer", "cardinality": "one", "label": "Times postponed", "description": "How many times the due date was moved"},
+    {"id": "about_task", "value_type": "entity", "cardinality": "one", "label": "About task", "description": "The task an event is about"},
+    {"id": "days_from_due", "value_type": "integer", "unit": "day", "cardinality": "one", "label": "Days from due", "description": "When a task was completed relative to its due date: positive is late"},
+    {"id": "reason_text", "value_type": "text", "cardinality": "one", "label": "Reason", "description": "Why something was postponed or dropped, in the owner's words"}
+  ],
+  "entities": [
+    {"key": "context:computer", "type": "context", "name": "Computer", "aliases": ["Computadora"]},
+    {"key": "context:phone", "type": "context", "name": "Phone", "aliases": ["Teléfono", "Telefono"]},
+    {"key": "context:errands", "type": "context", "name": "Errands", "aliases": ["Calle", "Out"]},
+    {"key": "context:home", "type": "context", "name": "Home", "aliases": ["Casa"]}
+  ],
+  "vocabularies": {
+    "task_state": ["inbox", "next", "waiting", "someday", "done", "dropped"],
+    "energy": ["low", "medium", "high"],
+    "deadline_kind": ["hard", "soft"]
+  },
+  "high_volume_event_types": ["task_captured", "task_clarified", "task_completed", "task_postponed"]
+}
